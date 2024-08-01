@@ -1,5 +1,7 @@
-# OWASP Web Application Security Testing Checklist
+# OWASP Web Application Security Testing Checklist Spanish / Español
+
 - Available in [PDF](OWASP/OWASP%20Web%20Application%20Security%20Testing%20Checklist.pdf) or [Docx](OWASP/OWASP%20Web%20Application%20Security%20Testing%20Checklist.docx) for printing
+- 
 -  [Trello Board to copy yours](https://trello.com/b/zTSkJPkL/owasp-web-checklist)
 
 ## Table of Contents
@@ -20,20 +22,18 @@
 
 -------
 ### <a name="Information">Information Gathering</a>
-- [ ] Manually explore the site
-- [ ] Spider/crawl for missed or hidden content
-- [ ] Check for files that expose content, such as robots.txt, sitemap.xml, .DS_Store
-- [ ] Check the caches of major search engines for publicly accessible sites
-- [ ] Check for differences in content based on User Agent (eg, Mobile sites, access as a Search engine Crawler)
-- [ ] Perform Web Application Fingerprinting
-- [ ] Identify technologies used
-- [ ] Identify user roles
-- [ ] Identify application entry points
-- [ ] Identify client-side code
-- [ ] Identify multiple versions/channels (e.g. web, mobile web, mobile app, web services)
-- [ ] Identify co-hosted and related applications
-- [ ] Identify all hostnames and ports
-- [ ] Identify third-party hosted content
+- [ ] Explorar manualmente el sitio (tanto con el navegador, como capturando con el Web Proxy /Burp/ZAP/ los http request & responses).
+- [ ] Revisar y leer los response http en el Web Proxy, en búsca de Ej.; Más información que pueda ser sensible, y que el render del navegador no muestre.
+- [ ] Realizar spider/crawl para contenido oculto o perdido (Ejecutar dirb, dirbuster, Acunetix, nuclei, etc) busca endpoints web y API.
+- [ ] Verificar archivos que expongan contenido, como robots.txt, sitemap.xml, .DS_Store, archivos de backups u otros, generalmente son hallazgos Ej.: Info en Acunetix.
+- [ ] Realizar búsqueda de subdominios, ejecutando amass en modo activo y pasivo o crt.sh, para reconocer otros subdominios como testing.domain.com, entre otros.
+- [ ] Realizar búsquedas de información pública en Internet o Dark Webs, en búsca de emails y leaks de secretos. Herramientas (Beygoo, SOCRadar, etc).
+- [ ] Visitar el sitio cambiando los User Agent (por ejemplo, visitar desde un celular, o como un motor de búsqueda). (Con el web proxy y las listas de Seclists o fuzzdb).
+- [ ] Realizar fingerprinting de la aplicación web (Reconocimientos de tecnologías en uso, por ejemplo tecnologías de backend mediante los códigos de error o respuestas en los headers del response http).
+- [ ] Identificar formularios y demás campos de ingreso de información.
+- [ ] Identificar sistemas de autenticación.
+- [ ] Identificar vulnerabilidades a nivel de todos los puertos y servicios expuestos por los hosts implicados en el servicio de la aplicación.
+- [ ] Identificar contenido alojado por terceros, por ejemplo CDNs, etc. Se puede ver en el Web Proxy los dominios visitados, observar si el contenido de terceros se carga de forma segura (https) y si tiene controles de integridad por ejemplo (integrity hashes).
 
 
 ### <a name="Configuration">Configuration Management</a>
